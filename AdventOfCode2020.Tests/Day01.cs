@@ -13,5 +13,13 @@ namespace AdventOfCode2020.Tests
             var output = await Solution01.ProblemOneAsync(input);
             Assert.Equal(expectedOutput, output);
         }
+
+        [Theory]
+        [InlineData(new[] { 1721, 979, 366, 299, 675, 1456 }, 241861950)]
+        public async Task ProblemTwo_ReturnsExpectedResult_WhenEnteringSampleFromWebsite(int[] input, int expectedOutput)
+        {
+            var output = await Solution01.ProblemTwoAsync(input);
+            Assert.Equal(expectedOutput, output);
+        }
     }
 }
