@@ -1,17 +1,19 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace AdventOfCode2020.Day01
 {
     public static class Solution01
     {
-        private static Task<int[]> ReadInput() => InputReader.ReadLinesAsIntegersAsync("Day01/input.txt");
+        private static Task<IEnumerable<int>> ReadInputAsync() => InputReader.ReadLinesAsIntegersAsync("Day01/input.txt");
 
         #region Problem One
         public static async Task<int> ProblemOneAsync()
         {
-            var input = await ReadInput();
-            return await ProblemOneAsync(input);
+            var input = await ReadInputAsync();
+            return await ProblemOneAsync(input.ToArray());
         }
 
         public static Task<int> ProblemOneAsync(int[] input)
@@ -35,8 +37,8 @@ namespace AdventOfCode2020.Day01
         #region Problem Two
         public static async Task<int> ProblemTwoAsync()
         {
-            var input = await ReadInput();
-            return await ProblemTwoAsync(input);
+            var input = await ReadInputAsync();
+            return await ProblemTwoAsync(input.ToArray());
         }
 
         public static Task<int> ProblemTwoAsync(int[] input)

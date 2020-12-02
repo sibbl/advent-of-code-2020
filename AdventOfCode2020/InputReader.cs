@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
@@ -7,13 +8,30 @@ namespace AdventOfCode2020
 {
     public static class InputReader
     {
-        public static async Task<int[]> ReadLinesAsIntegersAsync(string filename)
+        /// <summary>
+        /// Reads file and returns the content
+        /// </summary>
+        /// <param name="filename">Path to file to read</param>
+        /// <returns>File content</returns>
+        public static Task<string> ReadFileContent(string filename)
         {
-            var lines = await File.ReadAllTextAsync(filename);
+            return File.ReadAllTextAsync(filename);
+        }
+
+        /// <summary>
+        /// Reads file and converts each line into an integer
+        /// </summary>
+        /// <remarks>
+        /// Empty lines are ignored.
+        /// </remarks>
+        /// <param name="filename">Path to file to read</param>
+        /// <returns>Enumerable of integers</returns>
+        public static async Task<IEnumerable<int>> ReadLinesAsIntegersAsync(string filename)
+        {
+            var lines = await ReadFileContent(filename);
             return lines
                 .Split('\r', StringSplitOptions.RemoveEmptyEntries | StringSplitOptions.TrimEntries)
-                .Select(x => Convert.ToInt32(x))
-                .ToArray();
+                .Select(line => Convert.ToInt32(line));
         }
     }
 }
