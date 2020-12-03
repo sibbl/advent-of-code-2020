@@ -19,19 +19,36 @@ namespace AdventOfCode2020
         }
 
         /// <summary>
+        /// Reads file and returns the lines as a string array
+        /// </summary>
+        /// <param name="filename">Path to file to read</param>
+        /// <returns>File content</returns>
+        public static async Task<IEnumerable<string>> ReadLinesAsync(string filename)
+        {
+            var lines = await File.ReadAllLinesAsync(filename);
+            return lines;
+        }
+
+        /// <summary>
         /// Reads file and converts each line into an integer
         /// </summary>
-        /// <remarks>
-        /// Empty lines are ignored.
-        /// </remarks>
         /// <param name="filename">Path to file to read</param>
         /// <returns>Enumerable of integers</returns>
         public static async Task<IEnumerable<int>> ReadLinesAsIntegersAsync(string filename)
         {
-            var lines = await ReadFileContent(filename);
-            return lines
-                .Split('\r', StringSplitOptions.RemoveEmptyEntries | StringSplitOptions.TrimEntries)
-                .Select(line => Convert.ToInt32(line));
+            var lines = await ReadLinesAsync(filename);
+            return lines.Select(line => Convert.ToInt32(line));
+        }
+
+        /// <summary>
+        /// Reads file and returns the lines as a string array
+        /// </summary>
+        /// <param name="filename">Path to file to read</param>
+        /// <returns>File content</returns>
+        public static async Task<IEnumerable<IEnumerable<char>>> ReadMapAsync(string filename)
+        {
+            var lines =await File.ReadAllLinesAsync(filename);
+            return lines.Select(x => x.ToCharArray());
         }
     }
 }

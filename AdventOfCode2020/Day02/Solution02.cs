@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
@@ -45,23 +43,15 @@ namespace AdventOfCode2020.Day02
             }
         }
 
-        public static async Task<int> ProblemOneAsync() {
-            var input = await ReadInputAsync();
-            return await ProblemOneAsync(input);
-        }
-
-        public static Task<int> ProblemOneAsync(string input) {
-            var entries = InputParser.ParseLinesUsingRegex(
-                input,
-                PasswordEntryRegex,
-                match => new PasswordEntry<PasswordPolicyOne>(
+        public static async Task<int> ProblemOneAsync(string input = null) {
+            input ??= await ReadInputAsync();
+            var entries = PasswordEntryRegex.Matches(input).Select(match =>
+                new PasswordEntry<PasswordPolicyOne>(
                     match.Groups[RegexPasswordGroupName].Value,
                     new PasswordPolicyOne(match)
-                )
-            );
+                ));
 
-            var validPasswordsCount = entries.Count(entry => entry.IsValid());
-            return Task.FromResult(validPasswordsCount);
+            return entries.Count(entry => entry.IsValid());
         }
 
         #endregion
@@ -85,23 +75,15 @@ namespace AdventOfCode2020.Day02
             }
         }
 
-        public static async Task<int> ProblemTwoAsync() {
-            var input = await ReadInputAsync();
-            return await ProblemTwoAsync(input);
-        }
-
-        public static Task<int> ProblemTwoAsync(string input) {
-            var entries = InputParser.ParseLinesUsingRegex(
-                input,
-                PasswordEntryRegex,
-                match => new PasswordEntry<PasswordPolicyTwo>(
+        public static async Task<int> ProblemTwoAsync(string input = null) {
+            input ??= await ReadInputAsync();
+            var entries = PasswordEntryRegex.Matches(input).Select(match =>
+                new PasswordEntry<PasswordPolicyTwo>(
                     match.Groups[RegexPasswordGroupName].Value,
                     new PasswordPolicyTwo(match)
-                )
-            );
+                ));
 
-            var validPasswordsCount = entries.Count(entry => entry.IsValid());
-            return Task.FromResult(validPasswordsCount);
+            return entries.Count(entry => entry.IsValid());
         }
 
         #endregion
