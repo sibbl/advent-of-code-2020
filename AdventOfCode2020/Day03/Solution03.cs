@@ -67,8 +67,6 @@ namespace AdventOfCode2020.Day03
                     Y = _position.Y + vector.MoveDown
                 };
 
-            public bool CanWalk(StepVector vector) => _area.HasValueAt(GetNextPosition(vector));
-
             public bool TryWalk(StepVector vector, out AreaValue value)
             {
                 var nextPosition = GetNextPosition(vector);
@@ -85,9 +83,9 @@ namespace AdventOfCode2020.Day03
             {
                 _position = new();
                 var treeSum = 0;
-                while (CanWalk(stepVector))
+
+                while (TryWalk(stepVector, out var newPositionValue))
                 {
-                    TryWalk(stepVector, out var newPositionValue);
                     if (newPositionValue == AreaValue.Tree)
                     {
                         treeSum++;
