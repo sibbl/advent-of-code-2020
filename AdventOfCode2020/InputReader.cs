@@ -41,14 +41,46 @@ namespace AdventOfCode2020
         }
 
         /// <summary>
-        /// Reads file and returns the lines as a string array
+        /// Reads file and returns the lines as character map
         /// </summary>
         /// <param name="filename">Path to file to read</param>
-        /// <returns>File content</returns>
+        /// <returns>Character map</returns>
         public static async Task<IEnumerable<IEnumerable<char>>> ReadMapAsync(string filename)
         {
-            var lines =await File.ReadAllLinesAsync(filename);
+            var lines = await File.ReadAllLinesAsync(filename);
             return lines.Select(x => x.ToCharArray());
+        }
+
+        /// <summary>
+        /// Reads file and returns the lines as a string array, grouped into blocks separated by empty lines
+        /// </summary>
+        /// <param name="filename">Path to file to read</param>
+        /// <returns>Blocks of lines of strings</returns>
+        public static async Task<IEnumerable<IEnumerable<string>>> ReadBlocksBetweenEmptyLinesAsync(string filename)
+        {
+            var lines = await File.ReadAllLinesAsync(filename);
+            var result = new List<IEnumerable<string>>();
+            var currentBlock = new List<string>();
+            foreach (var line in lines)
+            {
+                if (string.IsNullOrWhiteSpace(line))
+                {
+                    if (currentBlock.Count > 0)
+                    {
+                        result.Add(currentBlock);
+                        currentBlock = new();
+                    }
+                }
+
+                currentBlock.Add(line);
+            }
+
+            if (currentBlock.Count > 0)
+            {
+                result.Add(currentBlock);
+            }
+
+            return result;
         }
     }
 }

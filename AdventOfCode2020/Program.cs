@@ -3,6 +3,7 @@ using System.Threading.Tasks;
 using AdventOfCode2020.Day01;
 using AdventOfCode2020.Day02;
 using AdventOfCode2020.Day03;
+using AdventOfCode2020.Day04;
 
 namespace AdventOfCode2020
 {
@@ -16,6 +17,8 @@ namespace AdventOfCode2020
             await DayTwoProblemTwo();
             await DayThreeProblemOne();
             await DayThreeProblemTwo();
+            await DayFourProblemOne();
+            await DayFourProblemTwo();
         }
 
         private static async Task DayOneProblemOne()
@@ -52,6 +55,18 @@ namespace AdventOfCode2020
         {
             var output = await Solution03.ProblemTwoAsync();
             Console.WriteLine($"Day 3, Problem 2: {output}");
+        }
+
+        private static async Task DayFourProblemOne()
+        {
+            var output = await Solution04.ProblemOneAsync();
+            Console.WriteLine($"Day 4, Problem 1: {output}");
+        }
+
+        private static async Task DayFourProblemTwo()
+        {
+            var output = await Solution04.ProblemTwoAsync();
+            Console.WriteLine($"Day 4, Problem 2: {output}");
         }
     }
 }
