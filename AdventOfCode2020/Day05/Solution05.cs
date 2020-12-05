@@ -18,12 +18,7 @@ namespace AdventOfCode2020.Day05
         };
 
         private static int CalculateSeatId(string line)
-        {
-            var binaryLine = line.ReplaceCharactersInString(BitReplacementMap);
-            var row = binaryLine[..7].ToIntegerFromBinary();
-            var column = binaryLine[7..].ToIntegerFromBinary();
-            return row * 8 + column;
-        }
+            => line.ReplaceCharactersInString(BitReplacementMap).ToIntegerFromBinary();
 
         #region Problem One
 
