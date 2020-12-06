@@ -71,8 +71,10 @@ namespace AdventOfCode2020
                         currentBlock = new();
                     }
                 }
-
-                currentBlock.Add(line);
+                else
+                {
+                    currentBlock.Add(line);
+                }
             }
 
             if (currentBlock.Count > 0)

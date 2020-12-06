@@ -5,74 +5,23 @@ using AdventOfCode2020.Day02;
 using AdventOfCode2020.Day03;
 using AdventOfCode2020.Day04;
 using AdventOfCode2020.Day05;
+using AdventOfCode2020.Day06;
 
-await DayOneProblemOne();
-await DayOneProblemTwo();
-await DayTwoProblemOne();
-await DayTwoProblemTwo();
-await DayThreeProblemOne();
-await DayThreeProblemTwo();
-await DayFourProblemOne();
-await DayFourProblemTwo();
-await DayFiveProblemOne();
-await DayFiveProblemTwo();
+await PrintSolution(1, 1, () => Solution01.ProblemOneAsync());
+await PrintSolution(1, 2, () => Solution01.ProblemTwoAsync());
+await PrintSolution(2, 1, () => Solution02.ProblemOneAsync());
+await PrintSolution(2, 2, () => Solution02.ProblemTwoAsync());
+await PrintSolution(3, 1, () => Solution03.ProblemOneAsync());
+await PrintSolution(3, 2, () => Solution03.ProblemTwoAsync());
+await PrintSolution(4, 1, () => Solution04.ProblemOneAsync());
+await PrintSolution(4, 2, () => Solution04.ProblemTwoAsync());
+await PrintSolution(5, 1, () => Solution05.ProblemOneAsync());
+await PrintSolution(5, 2, () => Solution05.ProblemTwoAsync());
+await PrintSolution(6, 1, () => Solution06.ProblemOneAsync());
+await PrintSolution(6, 2, () => Solution06.ProblemTwoAsync());
 
-static async Task DayOneProblemOne()
+static async Task PrintSolution(int day, int problem, Func<Task<int>> solutionFunc)
 {
-    var output = await Solution01.ProblemOneAsync();
-    Console.WriteLine($"Day 1, Problem 1: {output}");
-}
-
-static async Task DayOneProblemTwo()
-{
-    var output = await Solution01.ProblemTwoAsync();
-    Console.WriteLine($"Day 1, Problem 2: {output}");
-}
-
-static async Task DayTwoProblemOne()
-{
-    var output = await Solution02.ProblemOneAsync();
-    Console.WriteLine($"Day 2, Problem 1: {output}");
-}
-
-static async Task DayTwoProblemTwo()
-{
-    var output = await Solution02.ProblemTwoAsync();
-    Console.WriteLine($"Day 2, Problem 2: {output}");
-}
-
-static async Task DayThreeProblemOne()
-{
-    var output = await Solution03.ProblemOneAsync();
-    Console.WriteLine($"Day 3, Problem 1: {output}");
-}
-
-static async Task DayThreeProblemTwo()
-{
-    var output = await Solution03.ProblemTwoAsync();
-    Console.WriteLine($"Day 3, Problem 2: {output}");
-}
-
-static async Task DayFourProblemOne()
-{
-    var output = await Solution04.ProblemOneAsync();
-    Console.WriteLine($"Day 4, Problem 1: {output}");
-}
-
-static async Task DayFourProblemTwo()
-{
-    var output = await Solution04.ProblemTwoAsync();
-    Console.WriteLine($"Day 4, Problem 2: {output}");
-}
-
-static async Task DayFiveProblemOne()
-{
-    var output = await Solution05.ProblemOneAsync();
-    Console.WriteLine($"Day 5, Problem 1: {output}");
-}
-
-static async Task DayFiveProblemTwo()
-{
-    var output = await Solution05.ProblemTwoAsync();
-    Console.WriteLine($"Day 5, Problem 2: {output}");
-}
+    var output = await solutionFunc();
+    Console.WriteLine($"Day {day}, Problem {problem}: {output}");
+};
