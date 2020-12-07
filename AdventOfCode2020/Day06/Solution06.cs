@@ -35,9 +35,7 @@ namespace AdventOfCode2020.Day06
 
         private static int CountSameAnsweredQuestions(IEnumerable<string> block)
             => block
-                .Aggregate("abcdefghijklmnopqrstuvwxyz",
-                    (current, value) =>
-                        new string(current.Intersect(value).ToArray()))
+                .Aggregate((current, value) => new string(current.Intersect(value).ToArray()))
                 .Length;
 
         #endregion
