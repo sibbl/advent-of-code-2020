@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using System.Drawing;
 using System.Linq;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
@@ -13,8 +12,6 @@ namespace AdventOfCode2020.Day07
         private static Task<IEnumerable<string>> ReadInputAsync() => InputReader.ReadLinesAsync("Day07/input.txt");
 
         private static readonly Regex LineParseRegex = new(@"(?<Color>.*?) bags contain(?: (?<Bag>\d+ .*?) bags?[,.])*");
-
-        private record Bag(string Color, IDictionary<string, int> Children);
 
         private static Dictionary<string, Dictionary<string, int>> BagsWithChildren(IEnumerable<string> lines)
         {
@@ -34,15 +31,15 @@ namespace AdventOfCode2020.Day07
 
         #region Problem One
 
-        private static bool IsOrHasColoredBag(Dictionary<string, Dictionary<string, int>> bags, string color)
-            => bags[color].ContainsKey(MyBagColor) || bags[color].Keys.Any(color => IsOrHasColoredBag(bags, color));
+        private static bool IsOrHasMyColoredBag(Dictionary<string, Dictionary<string, int>> bags, string color)
+            => bags[color].ContainsKey(MyBagColor) || bags[color].Keys.Any(childColor => IsOrHasMyColoredBag(bags, childColor));
 
         public static async Task<int> ProblemOneAsync(IEnumerable<string> lines = null)
         {
             lines ??= await ReadInputAsync();
 
             var bags = BagsWithChildren(lines);
-            return bags.Keys.Count(color => IsOrHasColoredBag(bags, color));
+            return bags.Keys.Count(color => IsOrHasMyColoredBag(bags, color));
         }
 
         #endregion
@@ -59,7 +56,6 @@ namespace AdventOfCode2020.Day07
 
             return SumBagsOfColorsRecursively(BagsWithChildren(lines), MyBagColor);
         }
-
 
         #endregion
     }
