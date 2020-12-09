@@ -10,7 +10,7 @@ namespace AdventOfCode2020.Day04
 
         #region Problem One
 
-        public static async Task<int> ProblemOneAsync(IEnumerable<IEnumerable<string>> blocks = null)
+        public static async Task<long> ProblemOneAsync(IEnumerable<IEnumerable<string>> blocks = null)
         {
             blocks ??= await ReadInputAsync();
             return blocks.Select(Passport.ParseFromLines).Count(passport => passport.HasNecessaryFields());
@@ -20,7 +20,7 @@ namespace AdventOfCode2020.Day04
 
         #region Problem Two
 
-        public static async Task<int> ProblemTwoAsync(IEnumerable<IEnumerable<string>> blocks = null)
+        public static async Task<long> ProblemTwoAsync(IEnumerable<IEnumerable<string>> blocks = null)
         {
             blocks ??= await ReadInputAsync();
             return blocks.Select(Passport.ParseFromLines).Count(passport => passport.IsValid());

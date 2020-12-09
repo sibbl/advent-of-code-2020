@@ -22,7 +22,7 @@ namespace AdventOfCode2020.Day05
 
         #region Problem One
 
-        public static async Task<int> ProblemOneAsync(IEnumerable<string> lines = null)
+        public static async Task<long> ProblemOneAsync(IEnumerable<string> lines = null)
         {
             lines ??= await ReadInputAsync();
             return lines.Select(CalculateSeatId).Max();
@@ -32,7 +32,7 @@ namespace AdventOfCode2020.Day05
 
         #region Problem Two
 
-        public static async Task<int> ProblemTwoAsync(IEnumerable<string> lines = null)
+        public static async Task<long> ProblemTwoAsync(IEnumerable<string> lines = null)
         {
             lines ??= await ReadInputAsync();
 

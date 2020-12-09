@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
@@ -87,7 +86,7 @@ namespace AdventOfCode2020.Day08
 
         #region Problem One
 
-        public static async Task<int> ProblemOneAsync(IEnumerable<string> lines = null)
+        public static async Task<long> ProblemOneAsync(IEnumerable<string> lines = null)
         {
             lines ??= await ReadInputAsync();
 
@@ -109,7 +108,7 @@ namespace AdventOfCode2020.Day08
 
         #region Problem Two
 
-        public static async Task<int> ProblemTwoAsync(IEnumerable<string> lines = null)
+        public static async Task<long> ProblemTwoAsync(IEnumerable<string> lines = null)
         {
             lines ??= await ReadInputAsync();
 
@@ -129,12 +128,12 @@ namespace AdventOfCode2020.Day08
                     }
                 };
 
+
                 if (instruction != newInstruction)
                 {
-                    var modifiedAlgorithmInstructions = initialAlgorithmInstructions
-                        .Select((element, j) => j == i ? newInstruction : element).ToList();
+                    initialAlgorithmInstructions[i] = newInstruction;
 
-                    var algorithm = new Algorithm(modifiedAlgorithmInstructions);
+                    var algorithm = new Algorithm(initialAlgorithmInstructions);
                     try
                     {
                         algorithm.Run();
@@ -143,6 +142,8 @@ namespace AdventOfCode2020.Day08
                     catch (Exception ex) when (ex is IndexOutOfRangeException || ex is LoopDetectedException)
                     {
                     }
+
+                    initialAlgorithmInstructions[i] = instruction;
                 }
             }
 

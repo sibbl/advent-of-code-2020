@@ -34,7 +34,7 @@ namespace AdventOfCode2020.Day07
         private static bool IsOrHasMyColoredBag(Dictionary<string, Dictionary<string, int>> bags, string color)
             => bags[color].ContainsKey(MyBagColor) || bags[color].Keys.Any(childColor => IsOrHasMyColoredBag(bags, childColor));
 
-        public static async Task<int> ProblemOneAsync(IEnumerable<string> lines = null)
+        public static async Task<long> ProblemOneAsync(IEnumerable<string> lines = null)
         {
             lines ??= await ReadInputAsync();
 
@@ -50,7 +50,7 @@ namespace AdventOfCode2020.Day07
         private static int SumBagsOfColorsRecursively(Dictionary<string, Dictionary<string, int>> bags, string color)
             => bags[color].Sum(line => line.Value * (1 + SumBagsOfColorsRecursively(bags, line.Key)));
 
-        public static async Task<int> ProblemTwoAsync(IEnumerable<string> lines = null)
+        public static async Task<long> ProblemTwoAsync(IEnumerable<string> lines = null)
         {
             lines ??= await ReadInputAsync();
 

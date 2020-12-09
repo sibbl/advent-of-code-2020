@@ -43,7 +43,7 @@ namespace AdventOfCode2020.Day02
             }
         }
 
-        public static async Task<int> ProblemOneAsync(string input = null) {
+        public static async Task<long> ProblemOneAsync(string input = null) {
             input ??= await ReadInputAsync();
             var entries = PasswordEntryRegex.Matches(input).Select(match =>
                 new PasswordEntry<PasswordPolicyOne>(
@@ -75,7 +75,7 @@ namespace AdventOfCode2020.Day02
             }
         }
 
-        public static async Task<int> ProblemTwoAsync(string input = null) {
+        public static async Task<long> ProblemTwoAsync(string input = null) {
             input ??= await ReadInputAsync();
             var entries = PasswordEntryRegex.Matches(input).Select(match =>
                 new PasswordEntry<PasswordPolicyTwo>(

@@ -30,14 +30,14 @@ namespace AdventOfCode2020
         }
 
         /// <summary>
-        /// Reads file and converts each line into an integer
+        /// Reads file and converts each line into a long
         /// </summary>
         /// <param name="filename">Path to file to read</param>
-        /// <returns>Enumerable of integers</returns>
-        public static async Task<IEnumerable<int>> ReadLinesAsIntegersAsync(string filename)
+        /// <returns>Enumerable of longs</returns>
+        public static async Task<IEnumerable<long>> ReadLinesAsLongsAsync(string filename)
         {
             var lines = await ReadLinesAsync(filename);
-            return lines.Select(line => Convert.ToInt32(line));
+            return lines.Select(line => Convert.ToInt64(line));
         }
 
         /// <summary>

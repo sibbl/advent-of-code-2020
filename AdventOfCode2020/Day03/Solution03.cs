@@ -100,7 +100,7 @@ namespace AdventOfCode2020.Day03
 
         #region Problem One
 
-        public static async Task<int> ProblemOneAsync(IEnumerable<IEnumerable<char>> map = null)
+        public static async Task<long> ProblemOneAsync(IEnumerable<IEnumerable<char>> map = null)
         {
             map ??= await ReadInputAsync();
             var journey = new TravelJourney(new Area(map));
@@ -111,7 +111,7 @@ namespace AdventOfCode2020.Day03
 
         #region Problem Two
 
-        public static async Task<int> ProblemTwoAsync(IEnumerable<IEnumerable<char>> map = null)
+        public static async Task<long> ProblemTwoAsync(IEnumerable<IEnumerable<char>> map = null)
         {
             map ??= await ReadInputAsync();
             var journey = new TravelJourney(new Area(map));

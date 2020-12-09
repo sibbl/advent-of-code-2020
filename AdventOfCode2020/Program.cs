@@ -17,8 +17,10 @@ await PrintSolution(7, 1, () => AdventOfCode2020.Day07.Solution07.ProblemOneAsyn
 await PrintSolution(7, 2, () => AdventOfCode2020.Day07.Solution07.ProblemTwoAsync());
 await PrintSolution(8, 1, () => AdventOfCode2020.Day08.Solution08.ProblemOneAsync());
 await PrintSolution(8, 2, () => AdventOfCode2020.Day08.Solution08.ProblemTwoAsync());
+await PrintSolution(9, 1, () => AdventOfCode2020.Day09.Solution09.ProblemOneAsync());
+await PrintSolution(9, 2, () => AdventOfCode2020.Day09.Solution09.ProblemTwoAsync());
 
-static async Task PrintSolution(int day, int problem, Func<Task<int>> solutionFunc)
+static async Task PrintSolution(int day, int problem, Func<Task<long>> solutionFunc)
 {
     var output = await solutionFunc();
     Console.WriteLine($"Day {day}, Problem {problem}: {output}");
