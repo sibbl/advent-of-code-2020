@@ -23,5 +23,7 @@ namespace AdventOfCode2020.Extensions
         public static string ReplaceCharactersInString(this string input, IEnumerable<KeyValuePair<char, char>> replacementDict)
             => replacementDict.Aggregate(input, (current, value) => current.Replace(value.Key, value.Value));
 
+        public static long ToLongFromBinary(this string input) => Convert.ToInt64(input, 2);
+        public static long ToLongFromBinary(this char[] input) => ToLongFromBinary(new string(input));
     }
 }
