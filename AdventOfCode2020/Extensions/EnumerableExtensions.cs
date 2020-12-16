@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace AdventOfCode2020.Extensions
@@ -34,5 +35,12 @@ namespace AdventOfCode2020.Extensions
             addendOne = addendTwo = default;
             return false;
         }
+
+        public static long Multiply(this IEnumerable<long> enumerable)
+            => enumerable.Aggregate(1L, (a, b) => a * b);
+        public static long Multiply<T>(this IEnumerable<T> enumerable, Func<T, long> filter)
+            => enumerable.Select(filter).Aggregate(1L, (a, b) => a * b);
+        public static long Multiply<T>(this IEnumerable<T> enumerable, Func<T, int, long> filter)
+            => enumerable.Select(filter).Aggregate(1L, (a, b) => a * b);
     }
 }

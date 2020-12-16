@@ -31,6 +31,8 @@ await PrintSolution(14, 1, () => AdventOfCode2020.Day14.Solution14.ProblemOneAsy
 await PrintSolution(14, 2, () => AdventOfCode2020.Day14.Solution14.ProblemTwoAsync());
 await PrintSolution(15, 1, () => AdventOfCode2020.Day15.Solution15.ProblemOneAsync());
 await PrintSolution(15, 2, () => AdventOfCode2020.Day15.Solution15.ProblemTwoAsync());
+await PrintSolution(16, 1, () => AdventOfCode2020.Day16.Solution16.ProblemOneAsync());
+await PrintSolution(16, 2, () => AdventOfCode2020.Day16.Solution16.ProblemTwoAsync());
 
 static async Task PrintSolution(int day, int problem, Func<Task<long>> solutionFunc)
 {
